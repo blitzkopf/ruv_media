@@ -4,14 +4,14 @@ For more details about this integration, please refer to
 https://github.com/blitzkopf/ruv_media_browser
 """
 from __future__ import annotations
-from .coordinator import RUVMediaDataUpdateCoordinator
-from .const import DOMAIN
-from .api import RUVMediaBrowserApiClient
+# from .coordinator import RUVMediaDataUpdateCoordinator
+# from .const import DOMAIN
+# from .api import RUVMediaBrowserApiClient
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_PASSWORD, CONF_USERNAME, Platform
+from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
+# from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 type RUVMediaBrowserConfigEntry = ConfigEntry[{}]
 

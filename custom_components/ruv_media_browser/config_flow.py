@@ -3,11 +3,8 @@ from __future__ import annotations
 
 from typing import Any
 
-import voluptuous as vol
 from homeassistant import config_entries
-from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
-from homeassistant.helpers import selector
-from homeassistant.helpers.aiohttp_client import async_create_clientsession
+# from homeassistant.helpers.aiohttp_client import async_create_clientsession
 
 # from .api import (
 #     RUVMediaBrowserApiClient,
@@ -15,7 +12,7 @@ from homeassistant.helpers.aiohttp_client import async_create_clientsession
 #     RUVMediaBrowserApiClientCommunicationError,
 #     RUVMediaBrowserApiClientError,
 # )
-from .const import DOMAIN, LOGGER
+from .const import DOMAIN
 
 
 class RUVMediaBrowserFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
@@ -25,7 +22,7 @@ class RUVMediaBrowserFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
-    ) -> ConfigFlowResult:
+    ) -> config_entries.ConfigFlowResult:
         """Handle the initial step."""
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
@@ -37,6 +34,6 @@ class RUVMediaBrowserFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_onboarding(
         self, data: dict[str, Any] | None = None
-    ) -> ConfigFlowResult:
+    ) -> config_entries.ConfigFlowResult:
         """Handle a flow initialized by onboarding."""
         return self.async_create_entry(title="RÚV Media Browser", data={})

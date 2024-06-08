@@ -1,0 +1,12 @@
+{
+  "domain": "ruv_media_browser",
+  "name": "RÚV media browser",
+  "codeowners": [
+    "@blitzkopf"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/blitzkopf/ruv_media_browser",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/blitzkopf/ruv_media_browser/issues",
+  "version": "0.0.0"
+}

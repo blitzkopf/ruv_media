@@ -12,7 +12,6 @@ from .coordinator import RUVMediaDataUpdateCoordinator
 # from .api import RUVMediaBrowserApiClient
 from .data import RUVMediaBrowserData
 
-from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import __version__
 
 from homeassistant.const import Platform

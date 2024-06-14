@@ -141,7 +141,7 @@ class RUVMediaSource(MediaSource):
 
         return BrowseMediaSource(
             domain=DOMAIN,
-            identifier=f"channel",
+            identifier="channel",
             media_class=MediaClass.DIRECTORY,
             media_content_type=MediaType.VIDEO,
             title="Live Channels",
@@ -179,7 +179,7 @@ class RUVMediaSource(MediaSource):
 
         return BrowseMediaSource(
             domain=DOMAIN,
-            identifier=f"category",
+            identifier="category",
             media_class=MediaClass.DIRECTORY,
             media_content_type=MediaType.VIDEO,
             title="Categories",

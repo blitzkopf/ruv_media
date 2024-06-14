@@ -8,5 +8,8 @@
   "documentation": "https://github.com/blitzkopf/ruv_media_browser",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/blitzkopf/ruv_media_browser/issues",
+  "requirements": [
+    "ruvmedia"
+  ],
   "version": "0.0.0"
 }

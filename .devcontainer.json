@@ -2,6 +2,11 @@
     "name": "blitzkopf/ruv_media_browser",
     "image": "mcr.microsoft.com/devcontainers/python:3.12-bullseye",
     "postCreateCommand": "scripts/setup",
+    "mounts": [
+        // mount python package ruvmedia if you need to do parallel development on it
+        // you will need to do pip install -e /workspaces/ruvmedia when you start the container
+        "source=${localWorkspaceFolder}/../ruvmedia,target=${containerWorkspaceFolder}/../ruvmedia,type=bind"
+    ],
     "forwardPorts": [
         8123
     ],

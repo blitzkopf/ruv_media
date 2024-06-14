@@ -41,8 +41,6 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 ***
 
 [ruv_media_browser]: https://github.com/blitzkopf/ruv_media_browser
-[buymecoffee]: https://www.buymeacoffee.com/blitzkopf
-[buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
 [commits-shield]: https://img.shields.io/github/commit-activity/y/blitzkopf/ruv_media_browser.svg?style=for-the-badge
 [commits]: https://github.com/blitzkopf/ruv_media_browser/commits/main
 [discord]: https://discord.gg/Qa5fW2R
@@ -51,6 +49,6 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
 [forum]: https://community.home-assistant.io/
 [license-shield]: https://img.shields.io/github/license/blitzkopf/ruv_media_browser.svg?style=for-the-badge
-[maintenance-shield]: https://img.shields.io/badge/maintainer-Joakim%20Sørensen%20%40blitzkopf-blue.svg?style=for-the-badge
+[maintenance-shield]: https://img.shields.io/badge/maintainer-Yngvi%20Þór%20Sigurjónsson%20%40blitzkopf-blue.svg?style=for-the-badge
 [releases-shield]: https://img.shields.io/github/release/blitzkopf/ruv_media_browser.svg?style=for-the-badge
 [releases]: https://github.com/blitzkopf/ruv_media_browser/releases

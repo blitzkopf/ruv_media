@@ -84,6 +84,8 @@ class RUVMediaSource(MediaSource):
                 return await self._async_build_live(ruv_client, item)
             if item.identifier.startswith("category"):
                 return await self._async_build_categories(ruv_client, item)
+            if item.identifier.startswith("panel"):
+                return await self._async_build_panels(ruv_client, item)
             if item.identifier.startswith("program"):
                 return await self._async_build_programs(ruv_client, item)
 
@@ -99,6 +101,7 @@ class RUVMediaSource(MediaSource):
             children=[
                 await self._async_build_live(ruv_client, item),
                 await self._async_build_categories(ruv_client, item),
+                await self._async_build_panels(ruv_client, item),
 
                 # *await self._async_build_popular(radios, item),
                 # *await self._async_build_by_tag(radios, item),
@@ -170,7 +173,7 @@ class RUVMediaSource(MediaSource):
                     title=category.name,
                     can_play=False,
                     can_expand=True,
-                    # thumbnail=channel.favicon,
+                    thumbnail=category.image,
                 )
                 for category in categories
             ]
@@ -190,10 +193,48 @@ class RUVMediaSource(MediaSource):
             # thumbnail=channel.favicon,
         )
 
+    async def _async_build_panels(
+        self, ruv_client: RUVClient, item: MediaSourceItem
+    ) -> BrowseMediaSource:
+        """Handle browsing panels."""
+
+        if item.identifier:
+            prefix, _, panel = (item.identifier or "").partition(".")
+            LOGGER.debug("Panel: %s", panel)
+            panels = await ruv_client.async_get_panels(panel)
+            children = [
+                BrowseMediaSource(
+                    domain=DOMAIN,
+                    identifier=f"{panel.identifier}",
+                    media_class=MediaClass.CHANNEL,
+                    media_content_type=MediaType.VIDEO,
+                    title=panel.name,
+                    can_play=False,
+                    can_expand=True,
+                    thumbnail=panel.image,
+                )
+                for panel in panels
+            ]
+        else:
+            children = None
+
+        return BrowseMediaSource(
+            domain=DOMAIN,
+            identifier="panel",
+            media_class=MediaClass.DIRECTORY,
+            media_content_type=MediaType.VIDEO,
+            title="Panels",
+            can_play=False,
+            can_expand=True,
+            children_media_class=MediaClass.CHANNEL,
+            children=children,
+            # thumbnail=channel.favicon,
+        )
+
     async def _async_build_programs(
         self, ruv_client: RUVClient, item: MediaSourceItem
     ) -> BrowseMediaSource:
-        """Handle browsing categories."""
+        """Handle browsing programs."""
 
         if item.identifier:
             prefix, _, program = (item.identifier or "").partition(".")
@@ -203,12 +244,13 @@ class RUVMediaSource(MediaSource):
                 BrowseMediaSource(
                     domain=DOMAIN,
                     identifier=f"{episode.identifier}",
-                    media_class=MediaClass.CHANNEL,
+                    media_class=MediaClass.EPISODE,
                     media_content_type=MediaType.VIDEO,
                     title=episode.name,
                     can_play=True,
                     can_expand=False,
-                    # thumbnail=channel.favicon,
+                    thumbnail=episode.image,
+
                 )
                 for episode in episodes
             ]
@@ -223,7 +265,7 @@ class RUVMediaSource(MediaSource):
             title="Episodes",
             can_play=False,
             can_expand=True,
-            children_media_class=MediaClass.CHANNEL,
+            children_media_class=MediaClass.EPISODE,
             children=children,
             # thumbnail=channel.favicon,
         )
